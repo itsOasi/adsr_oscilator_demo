@@ -3,32 +3,14 @@
   <head>
     <title>Enter the Raffle to Win Prizes</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<script src="index.js"></script>
+    <script src="scripts/util.js"></script>
+    <script src="index.js"></script>
   </head>
   <body>
-    <div class="container" id="enter-raffle-container">
-      <h1>Enter the Raffle to Win Prizes</h1>
-      <form id="enter-raffle-form" class="form" name="enter-raffle-form">
-        <div class="form-group">
-          <label for="name">Name:</label>
-          <input type="text" id="name" class="form-control" />
-        </div>
-        <div class="form-group">
-          <label for="email">Email:</label>
-          <input type="email" id="email" class="form-control" />
-        </div>
-        <button type="submit" class="btn btn-primary">Enter Raffle</button>
-      </form>
-      <p class="small text-muted">By entering your email address and name, you agree to our <a href="/privacy-policy">privacy policy</a>.</p>
-    </div>
-    <div id="thank-you-container" class="container" style="display: none;">
-      <h2>Thank You for Your Submission!</h2>
-      <p>Upcoming raffle drawings will be held on the first of each month at 3:00 PM.</p>
-      <div class="social-media-links">
-        <a href="https://facebook.com" target="_blank">Facebook</a> |
-        <a href="https://twitter.com" target="_blank">Twitter</a> |
-        <a href="https://instagram.com" target="_blank">Instagram</a>
-      </div>
+    <header class="jumbotron text-center">
+      <button id="home" class="btn">Home</button>
+    </header>
+    <div id="body" class="container">
     </div>
   </body>
 </html>

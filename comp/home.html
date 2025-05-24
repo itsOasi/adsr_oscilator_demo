@@ -1,0 +1,23 @@
+<div id="home" class="container">
+    <div class="row">
+        <div class="col">
+            <h1>Welcome to Innova Prize Wheel</h1>
+            <a id="start_giveaway" class="btn btn-primary">Start a Giveaway</a>
+        </div>
+    </div>
+    <div class="row">
+        <div id="organization" class="col">
+            <h2>Edit your organization</h2>
+        </div>
+    </div>
+    <script>
+        console.log('Utility script loaded');
+        document.getElementById('start_giveaway').addEventListener('click', function() {
+            console.log('Starting giveaway...');
+            navigateTo('giveaway');
+        });
+        document.getElementById('organization').addEventListener('click', function() {
+            navigateTo('organization');
+        });
+    </script>
+</div>
