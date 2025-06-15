@@ -43,3 +43,18 @@ async function loadComponent(comp) {
         document.body.innerHTML = `<p>Error loading ${comp} page.</p>`;
     }
 }
+
+let messageBus = {
+    listeners: {},
+    on: function(event, callback) {
+        if (!this.listeners[event]) {
+            this.listeners[event] = [];
+        }
+        this.listeners[event].push(callback);
+    },
+    emit: function(event, data) {
+        if (this.listeners[event]) {
+            this.listeners[event].forEach(callback => callback(data));
+        }
+    }
+}
