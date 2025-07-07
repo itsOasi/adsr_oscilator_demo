@@ -24,7 +24,7 @@
         (function () {
             let winner = {}
             let entries = [];
-            let entryurl = location.href.split("/").slice(0, -1).join("/") + "/?page=entry";
+            let entryurl = "https://docs.google.com/forms/d/e/1FAIpQLScR1TZTo7mveYXlaG6zcJr-jgd_yKQYn_qzsdUv1MhUIfOMCw/viewform?usp=header";
 
             // add share button
             let shareBtn = document.createElement('button');
@@ -71,7 +71,7 @@
                     console.log(data);
                     if (data.length > 0) {
                         winner = data[Math.floor(Math.random() * data.length)];
-                        document.querySelector("#winner").innerText = `Winner: ${winner.name} (${winner.email})`;
+                        document.querySelector("#winner").innerText = `Winner: ${winner[0]} (${winner[1]})`;
                     } else {
                         document.querySelector("#winner").innerText = "No entries found.";
                     }
