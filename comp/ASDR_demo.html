@@ -6,10 +6,14 @@
 		<label>S: <input id="sustain" type="range" min="0" max="1" step="0.01" value="0.7"></label>
 		<label>R: <input id="release" type="range" min="0" max="2" step="0.01" value="0.5"></label>
 	</div>
-
+	<div id="keyboard-component">
+		<h3>Keyboard</h3>
+		<div id="keys"></div>
+	</div>
 	<script>
 	(function() {
 		const adsr = {a:0.1, d:0.1, s:0.7, r:0.5, gain:0.5};
+		const notes = [60,62,64,65,67,69,71,72]; // C major octave
 
 		function initADSR() {
 			// Attach slider event handlers
@@ -22,8 +26,28 @@
 				};
 			});
 
+			const keysDiv = document.querySelector('#keys');
+
+				notes.forEach((note, i) => {
+					const key = document.createElement('button');
+					key.textContent = String.fromCharCode(65 + i); // A-H labels
+
+					// Pull latest ADSR snapshot from sticky message bus on press/release
+					key.onmousedown = () => {
+						const currentADSR = messageBus.stickyEvents?.adsrReady || {a:0.1,d:0.1,s:0.7,r:0.5,gain:0.5};
+						messageBus.emit('oscillatorNoteOn', { midiNote: note, adsr: {...currentADSR} });
+					};
+					key.onmouseup = () => {
+						const currentADSR = messageBus.stickyEvents?.adsrReady || {a:0.1,d:0.1,s:0.7,r:0.5,gain:0.5};
+						messageBus.emit('oscillatorNoteOff', { midiNote: note, adsr: {...currentADSR} });
+					};
+
+					keysDiv.appendChild(key);
+				});
+
 			// Emit initial ADSR values
 			messageBus.emit('adsrReady', {...adsr});
+			messageBus.emit('keyboardReady');
 		}
 
 		if (document.readyState === 'loading') {
