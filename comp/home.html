@@ -1,17 +1,13 @@
 <div id="home" class="container text-center">
     <div class="row">
-        <div class="col">
-            <h1 >Welcome to Innova Prize Wheel</h1>
-            <a id="start_giveaway" class="btn btn-primary">Start a Giveaway</a>
-        </div>
+
     </div>
     <script>
-        (function () {
-            console.log('Utility script loaded');
-            document.getElementById('start_giveaway').addEventListener('click', function() {
-                console.log('Starting giveaway...');
-                navigateTo('giveaway');
-            });
+		(function () {
+			console.log('Utility script loaded');
+			loadComponent('ASDR_demo');
+			loadComponent('keyboard');
+			loadPresetFromURL();
         })()
     </script>
 </div>
