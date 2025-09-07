@@ -18,7 +18,7 @@ window.AudioEngine = (function() {
 
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
-        osc.type = 'sawtooth';
+        osc.type = 'sine';
         osc.frequency.setValueAtTime(freq, now);
         osc.connect(gain).connect(audioCtx.destination);
         osc.start();

@@ -1,9 +1,9 @@
 :root{
-    --text: #660093;
-    --background: #edeffe;
-    --primary: #ffcc00;
-    --secondary: #cc95e4;
-    --accent: #6476fe;
+    --text: #eee;
+    --background: #333;
+    --primary: #666;
+    --secondary: #777;
+    --accent: #999;
 
 }
 
@@ -59,4 +59,14 @@ header{
 #container3D>canvas:hover{
     cursor: pointer;
     scale: 1.1;
+}
+.key{
+    color: var(--text);
+    background-color: var(--background);
+    height: 20vh;
+    width: 8.3vw;
+    &>.black{
+        color: var(--background) !important;
+        background-color: var(--primary) !important;
+    }
 }
