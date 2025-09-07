@@ -62,11 +62,12 @@ header{
 }
 .key{
     color: var(--text);
-    background-color: var(--background);
+    background-color: var(--primary);
     height: 20vh;
-    width: 8.3vw;
-    &>.black{
-        color: var(--background) !important;
-        background-color: var(--primary) !important;
+    width: 7.69%;
+    border: none;
+    &.black{
+        color: var(--text) !important;
+        background-color: var(--background) !important;
     }
 }
