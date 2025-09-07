@@ -10,6 +10,7 @@
 
 			function initKeyboard() {
 				const keysDiv = document.querySelector('#keys');
+				key.classList.add(".key")
 
 				notes.forEach((note, i) => {
 					const key = document.createElement('button');
@@ -20,7 +21,15 @@
 						const currentADSR = messageBus.stickyEvents?.adsrReady || {a:0.1,d:0.1,s:0.7,r:0.5,gain:0.5};
 						messageBus.emit('oscillatorNoteOn', { midiNote: note, adsr: {...currentADSR} });
 					};
+					key.ontouchstart = () => {
+						const currentADSR = messageBus.stickyEvents?.adsrReady || {a:0.1,d:0.1,s:0.7,r:0.5,gain:0.5};
+						messageBus.emit('oscillatorNoteOn', { midiNote: note, adsr: {...currentADSR} });
+					};
 					key.onmouseup = () => {
+						const currentADSR = messageBus.stickyEvents?.adsrReady || {a:0.1,d:0.1,s:0.7,r:0.5,gain:0.5};
+						messageBus.emit('oscillatorNoteOff', { midiNote: note, adsr: {...currentADSR} });
+					};
+					key.ontouchend = () => {
 						const currentADSR = messageBus.stickyEvents?.adsrReady || {a:0.1,d:0.1,s:0.7,r:0.5,gain:0.5};
 						messageBus.emit('oscillatorNoteOff', { midiNote: note, adsr: {...currentADSR} });
 					};

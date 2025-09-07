@@ -44,17 +44,31 @@
 
 				octaveC4.forEach((note, i) => {
 					const key = document.createElement('button');
+
 					key.textContent = note.name; // A-H labels
+					key.classList.add("key")
 
 					// Pull latest ADSR snapshot from sticky message bus on press/release
-					key.onmousedown = () => {
+					key.onmousedown = (e) => {
+						//e.preventDefault()
 						const currentADSR = messageBus.stickyEvents?.adsrReady || {a:0.1,d:0.1,s:0.7,r:0.5,gain:0.5};
 						messageBus.emit('oscillatorNoteOn', { midiNote: note, adsr: {...currentADSR} });
 					};
+					key.ontouchstart = (e) => {
+						//e.preventDefault()
+						const currentADSR = messageBus.stickyEvents?.adsrReady || {a:0.1,d:0.1,s:0.7,r:0.5,gain:0.5};
+						messageBus.emit('oscillatorNoteOn', { midiNote: note, adsr: {...currentADSR} });
+																							};
+					
 					key.onmouseup = () => {
 						const currentADSR = messageBus.stickyEvents?.adsrReady || {a:0.1,d:0.1,s:0.7,r:0.5,gain:0.5};
 						messageBus.emit('oscillatorNoteOff', { midiNote: note, adsr: {...currentADSR} });
+					}
+					key.ontouchend = () => {
+						const currentADSR = messageBus.stickyEvents?.adsrReady || {a:0.1,d:0.1,s:0.7,r:0.5,gain:0.5};
+						messageBus.emit('oscillatorNoteOff', { midiNote: note, adsr: {...currentADSR} });
 					};
+					
 
 					keysDiv.appendChild(key);
 				});
