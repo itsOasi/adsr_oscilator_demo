@@ -13,7 +13,21 @@
 	<script>
 	(function() {
 		const adsr = {a:0.1, d:0.1, s:0.7, r:0.5, gain:0.5};
-		const notes = [60,62,64,65,67,69,71,72]; // C major octave
+		const octaveC4 = [
+    { name: "C4",  value: 60 },
+    { name: "C#4", value: 61 },
+    { name: "D4",  value: 62 },
+    { name: "D#4", value: 63 },
+    { name: "E4",  value: 64 },
+    { name: "F4",  value: 65 },
+    { name: "F#4", value: 66 },
+    { name: "G4",  value: 67 },
+    { name: "G#4", value: 68 },
+    { name: "A4",  value: 69 },
+    { name: "A#4", value: 70 },
+    { name: "B4",  value: 71 },
+];
+
 
 		function initADSR() {
 			// Attach slider event handlers
@@ -28,9 +42,9 @@
 
 			const keysDiv = document.querySelector('#keys');
 
-				notes.forEach((note, i) => {
+				octaveC4.forEach((note, i) => {
 					const key = document.createElement('button');
-					key.textContent = String.fromCharCode(65 + i); // A-H labels
+					key.textContent = note.name; // A-H labels
 
 					// Pull latest ADSR snapshot from sticky message bus on press/release
 					key.onmousedown = () => {
